@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import Signup from "../pages/sign-up";
 import "./App.css";
 import { ToastContainer } from "react-toastify";
