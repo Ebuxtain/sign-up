@@ -9,7 +9,7 @@ import info from "../src/assets/info.png";
 import chevon from "../src/assets/chevron-left.svg";
 import { BsEyeSlash, BsEye } from "react-icons/bs";
 // import icon from "../src/assets/icon-user.svg";
-
+import axios from 'axios';
 
 const signupSchema = z.object({
     fullname: z
@@ -65,12 +65,11 @@ const Signup = () => {
             setLoading(true)
             signupSchema.parse(formData)
 
-            const response = post('', formData).then(res => {
+            const response = axios.post('/users/sign-up', formData).then((res: { status: number; }) => {
                 if (res.status == 201) {
-                    setLoading(false);
+                    setLoading(!loading)
 
-
-
+                    console.log("User Created Successfuly")
                 }
             }).catch((err: { response: { data: { error: any; }; }; }) => {
                 setLoading(false);
